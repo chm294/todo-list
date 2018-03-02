@@ -2,6 +2,7 @@
 Simple To Do List Application built with React
 
 ## Instructions
++ npm start to begin on localhost:3000
 + type in the insert new task bar to add new task items
 + hover over your entries to highlight; click to move the items when they are done
 + accomplished items will appear in a separate list below
