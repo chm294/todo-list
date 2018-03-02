@@ -3,7 +3,7 @@ Simple To Do List Application built with React
 
 ## Instructions
 + type in the insert new task bar to add new task items
-+ hover over your entries to highlight and click to move the items when they are done
++ hover over your entries to highlight; click to move the items when they are done
 + accomplished items will appear in a separate list below
 
 
@@ -16,7 +16,7 @@ The application follows a top-down unidirectional data flow
 + Holds count for tasks done and tasks undone
 
 #### Input.jsx 
-+ detects state change from the user as a new task is typed and submitted
++ detects state change from the user as a new string is typed and submitted
 + passes submitted strings up to App.js
 
 #### todoList.jsx & accomplishedList.jsx
