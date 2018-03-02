@@ -12,7 +12,7 @@ export default class TodoEntry extends Component {
 
 	render() {
 		return(
-			<div onClick={this.handleDelete}>
+			<div className="task" onClick={this.handleDelete}>
 					{this.props.task}
 			</div>
 		)

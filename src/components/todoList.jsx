@@ -10,9 +10,9 @@ export default class TodoList extends Component {
 	render() {
 		return(
 			<div>
+				<h2>{this.props.undoneCount} Left To Do </h2>
 				{
 					Object.keys(this.props.tasks).map((key) =>{
-						console.log(key + this.props.tasks[key])
 						if(this.props.tasks[key] === 'undone') {
 							return <TodoEntry deleteTask={this.props.deleteTask} task={key}/>
 						}

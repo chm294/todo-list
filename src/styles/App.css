@@ -1,3 +1,13 @@
 .App {
   text-align: center;
 }
+
+.task {
+  text-decoration: none;
+}
+
+.task:hover {
+  color: red;
+  text-decoration: line-through;
+  font-weight: bold;
+}

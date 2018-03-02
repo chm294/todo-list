@@ -17,16 +17,18 @@ export default class Input extends Component {
 	handleSubmit = function(e) {
 		e.preventDefault();
 		document.getElementById("task-input").reset()
-		this.props.handleNewTask(this.state.taskValue)
+		this.props.handleNewTask(this.state.taskValue.trim())
+		this.setState({taskValue : ''})
 	}
 	
 	render() {
 		return(
 			<div>
 				<form id="task-input" onSubmit={this.handleSubmit}>
-					New task
+					Insert New task
 					<br></br>
 					<input
+						autoFocus
 						type="text" 
 						name="task"
 						value={this.state.value}
