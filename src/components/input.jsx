@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 export default class Input extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			taskValue : '',
-		}
+		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -16,18 +17,17 @@ export default class Input extends Component {
 	
 	handleSubmit = function(e) {
 		e.preventDefault();
-		document.getElementById("task-input").reset()
 		this.props.handleNewTask(this.state.taskValue.trim())
-		this.setState({taskValue : ''})
+		document.getElementById("task-input").reset()
 	}
 	
 	render() {
+		console.log('state'+this.state.taskValue)
 		return(
 			<div>
 				<form id="task-input" onSubmit={this.handleSubmit}>
-					Insert New task
-					<br></br>
 					<input
+						placeholder="Insert new task"
 						autoFocus
 						type="text" 
 						name="task"
@@ -39,3 +39,7 @@ export default class Input extends Component {
 		)
 	}
 }
+
+Input.propTypes = {
+	handleNewTask: PropTypes.func.isRequired,
+};

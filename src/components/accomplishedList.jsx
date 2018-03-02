@@ -1,26 +1,26 @@
 import React, {Component} from 'react';
-import AccomplishedEntry from './accomplishedEntry'
+import AccomplishedEntry from './accomplishedEntry';
+import PropTypes from 'prop-types';
 
 
-export default class AccomplishedList extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-
-		}
-	}
-	render(){
-		return(
-			<div>
-				<h2>{this.props.doneCount} {this.props.doneCount > 1 ? 'tasks' : 'task' } accomplished today </h2>
-				{
-					Object.keys(this.props.tasks).map((key) => {
-						if(this.props.tasks[key] === 'done') {
-							return <AccomplishedEntry task={key}/>
-						}
-					})
-				}
-			</div>
-		)
-	}
+export default function AccomplishedList (props) {
+	return(
+		<section>
+			<h2>{props.doneCount} {props.doneCount > 1 ? 'tasks' : 'task' } accomplished today </h2>
+				<ul className="list">
+					{
+						Object.keys(props.tasks).map((key) => {
+							if(props.tasks[key] === 'done') {
+								return <AccomplishedEntry key={key} task={key}/>
+							}
+						})
+					}
+				</ul>
+		</section>
+	);
 }
+
+AccomplishedList.propTypes = {
+	doneCount: PropTypes.number.isRequired,
+	tasks: PropTypes.object.isRequired,
+};

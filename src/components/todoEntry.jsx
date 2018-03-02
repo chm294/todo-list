@@ -1,20 +1,16 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
-export default class TodoEntry extends Component {
-	constructor(props) {
-		super(props);
-		this.handleDelete = this.handleDelete.bind(this);
-	}
 
-	handleDelete () {
-		this.props.deleteTask(this.props.task)
-	}
-
-	render() {
-		return(
-			<div className="task" onClick={this.handleDelete}>
-					{this.props.task}
-			</div>
-		)
-	}
+export default function TodoEntry (props) {
+	return(
+		<div className="entry task" onClick={() => props.deleteTask(props.task)}>
+				{props.task}
+		</div>
+	)
 }
+
+TodoEntry.propTypes = {
+	deleteTask: PropTypes.func.isRequired,
+	task: PropTypes.string.isRequired
+};

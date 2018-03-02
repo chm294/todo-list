@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './styles/App.css';
-import Input from './containers/input.jsx'
-import TodoList from './components/todoList.jsx'
-import AccomplishedList from './components/accomplishedList'
+import Input from '../components/input.jsx';
+import TodoList from '../components/todoList.jsx';
+import AccomplishedList from '../components/accomplishedList';
+
+import '../styles/App.css';
 
 export default class App extends Component {
   constructor(props) {
@@ -11,18 +12,21 @@ export default class App extends Component {
       tasks: {},
       undoneCount: 0,
       doneCount: 0,
-    }
+    };
     this.handleNewTask = this.handleNewTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
   }
 
   handleNewTask(task) {
     if(task === '') {
-      alert('cannot submit an empty task')
+      alert('cannot submit an empty task');
     } else if(this.state.tasks[task] === undefined) {
-      this.state.tasks[task] = 'undone'
-      this.setState({undoneCount: this.state.undoneCount+=1})
-      this.setState({newTask : task})
+      // this.state.tasks[task] = 'undone'
+      let updatedObj = Object.assign(this.state.tasks, {[task]: 'undone'})
+      this.setState({
+        undoneCount: this.state.undoneCount+=1,
+        tasks: updatedObj
+      });
     } else if (this.state.tasks[task] === 'done'){
       alert('you already accomplished \'' + task + '\' today')      
     } else {
@@ -32,11 +36,16 @@ export default class App extends Component {
 
   deleteTask(taskName) {
     this.state.tasks[taskName] = 'done'
-    this.setState({undoneCount : this.state.undoneCount-=1})
-    this.setState({doneCount : this.state.doneCount+=1})
+    let updatedObj = Object.assign({}, this.state.tasks, {[taskName]: 'done'})
+    this.setState({
+      undoneCount : this.state.undoneCount-=1,
+      doneCount : this.state.doneCount+=1,
+      tasks: updatedObj
+    });
   }
 
   render() {
+    console.log(this.state.tasks)
     return (
       <div className="App">
         <header className="App-header">
