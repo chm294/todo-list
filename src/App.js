@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles/App.css';
-import Input from './components/input.jsx'
+import Input from './containers/input.jsx'
 import TodoList from './components/todoList.jsx'
 import AccomplishedList from './components/accomplishedList'
 
@@ -37,7 +37,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <header className="App-header">
